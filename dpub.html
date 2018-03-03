@@ -1,0 +1,446 @@
+---
+title: D-PUB
+permalink: /dpub/
+---
+
+<!DOCTYPE html>
+<html lang="ko" id="html">
+<head>
+<meta charset="utf-8">
+<title>D-PUB</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/typicons.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/article.css"> -->
+<link rel="stylesheet" type="text/css" href="css/d-pub.css">
+</head>
+<body id="d-pub">
+<div id="wrap">
+    <!-- header -->
+    <div id="header">
+        <nav class="navbar navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a id="nav-title" class="navbar-brand" href="">
+                    <i>D-PUB</i>
+                </a>
+            </div>
+            <div class="navbar-content navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" style="margin-right:2em;">
+                <!-- <li>                    
+                    <a href="#" id="component-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                        
+                        <div class="nav-text">컴포넌트</div>
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunImage"><a href="#" role="menuitem">로컬 이미지</a></li>
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunImageSlider"><a href="#" role="menuitem">이미지 슬라이더</a></li>
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunTab"><a href="#" role="menuitem">탭</a></li>
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunGNB"><a href="#" role="menuitem">GNB</a></li>
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunGallery"><a href="#" role="menuitem">갤러리</a></li>
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunRanking"><a href="#" role="menuitem">랭킹</a></li> -->
+                        <!-- <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunPinterest"><a href="#" role="menuitem">핀터레스트</a></li>
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunParallax"><a href="#" role="menuitem">패럴렉스</a></li> -->
+                        <!-- <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunFrameList"><a href="#" role="menuitem">인기기사 리스트</a></li> -->
+                        <!-- <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunComGNB"><a href="#" role="menuitem">조선닷컴GNB</a></li> -->
+                       <!--  <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunLifeGNB"><a href="#" role="menuitem">라이프GNB</a></li>
+                        <li class="com-menu disabled" role="presentation" id="component" component-name="ChosunFooter"><a href="#" role="menuitem">푸터</a></li>
+                        <input type="file" accept="image/*" class="image-inp hidden"></li>
+                    </ul>
+                </li> -->
+                <li>                    
+                    <a href="#" id="grid-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="nav-text">그리드</div>
+                        <span class="glyphicon glyphicon-th"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-left" role="menu">                       
+                        <li class="insert-grid disabled" role="presentation"><a href="#" data-toggle="modal" data-target="#grid-modal" role="menuitem">그리드 넣기</a></li>
+                        <li class="remove-grid disabled" role="presentation"><a href="#" role="menuitem">그리드 제거</a></li>                              
+                        <li role="presentation" class="divider"></li>
+                        <li class="grid-setting" role="presentation"><a href="#" data-toggle="modal" data-target="#setting-modal" role="menuitem">그리드 설정</a></li>                
+                        <li class="export-grid disabled" role="presentation"><a href="#" data-toggle="modal" data-target="#export-modal" role="menuitem">그리드 저장</a>
+                        <li class="import-grid" role="presentation"><a href="#" role="menuitem">그리드 불러오기</a></li>
+                        <input type="file" accept=".grid" class="import-grid-inp hidden"></li>
+                    </ul>
+                </li>
+                <li>                    
+                    <a href="#" id="device-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="nav-text">디바이스</div>
+                        <span class="typcn typcn-device-desktop no-font-size"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="device-menu dropdown-menu dropdown-menu-left" role="menu">
+                    <li role="presentation"><a href="#" data-device="md" role="menuitem"><i class="typcn typcn-device-desktop"></i><div class="menu-text">데스크탑</div></a></li>
+                    <li role="presentation"><a href="#" data-device="sm" data-size="770" role="menuitem"><i class="typcn typcn-device-tablet"></i><div class="menu-text">태블릿</div></a></li>
+                    <li role="presentation"><a href="#" data-device="xs" data-size="375" role="menuitem"><i class="typcn typcn-device-phone"></i><div class="menu-text">모바일</div></a></li>
+                    </ul>
+                </li>
+                <!-- <li>                    
+                    <a href="#" id="sidemenu-btn">
+                        <div class="nav-text">전체화면</div>
+                        <span class="typcn typcn-media-play"></span>
+                    </a>
+                </li> -->
+                <!-- <li>                     -->
+                    <!-- <a href="#" id="save-btn" download="d-pub.zip"> -->
+                        <!-- <div class="nav-text">퍼블리싱</div> -->
+                        <!-- <span class="glyphicon glyphicon-floppy-disk"></span> -->
+                    <!-- </a> -->
+                <!-- </li> -->
+               <!--  <li>                
+                    <a href="#" id="search-btn">
+                        <div class="nav-text">기사</div>
+                        <span class="typcn typcn-news"></span>
+                    </a>
+                </li>
+                <li>                    
+                    <a href="#" id="image-btn">
+                        <div class="nav-text">이미지</div>
+                        <span class="glyphicon glyphicon-picture"></span>
+                    </a>
+                </li> -->
+                <!-- <li>                    
+                    <a href="#" id="video-btn">
+                        <div class="nav-text">동영상</div>
+                        <span class="typcn typcn-video"></span>
+                    </a>
+                </li>  -->               
+                </ul>
+            </div>           
+        </nav>       
+        <div id="grid-modal" class="modal" role="dialog" aria-hidden="true">        
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>그리드 넣기</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">행과 열의 수</label> 
+                            <div class="input-form-group">                                       
+                                <input type="text" id="row-inp" class="form-control">
+                                <div class="input-group-addon">X</div>
+                                <input type="text" id="col-inp" class="form-control">
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        <button type="button" id="grid-modal-btn" class="btn btn-info">설정</button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div id="setting-modal" class="modal" role="dialog" aria-hidden="true">        
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>그리드 설정</h4>
+                    </div>
+                    <div class="modal-body">                         
+                        <div class="form-group">                           
+                            <label for="">넓이</label> 
+                            <div class="input-form-group">                                       
+                                <input type="text" id="width-inp" class="form-control">
+                                <div class="input-group-addon">PX</div>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="rwd-inp" checked="checked">반응형으로 설정</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        <button type="button" id="grid-setting-btn" class="btn btn-info">설정</button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div id="export-modal" class="modal" role="dialog" aria-hidden="true">
+            	<div class="modal-dialog modal-sm">
+            		<div class="modal-content">
+            			<div class="modal-header">
+            				<h4>그리드 저장</h4>
+            			</div>
+            			<div class="modal-body">
+            				<div class="form-group">
+            					<label for="">파일 이름</label>
+        						<div class="input-form-group">                                       
+                                	<input type="text" id="file-inp" class="form-control">
+                                	<div class="input-group-addon file-inp-addon">.grid</div>
+                                </div>
+                            </div>
+            			</div>
+            			<div class="modal-footer">
+            				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        	<button type="button" id="grid-save-btn" class="btn btn-info">저장</button>
+                    	</div>
+            		</div>
+            	</div>
+            </div>  
+    </div>
+    <!-- //header -->
+    <!-- container -->
+    <div id="container"> 
+    <!-- content -->
+    <div id="content" class="tab-content container-fluid full">
+        <div id="grid-panel" class="tab-pane active" role="tabpanel">
+            <iframe id="grid-frame" src="grid.html" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+    <!-- //content -->
+    <div id="search-panel" class="panel" style="display:none">
+        <div class="search-radio">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="search-radio" id="keyword-search" checked>
+                    키워드로
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="search-radio" id="id-search">
+                    기사 아이디로
+                </label>
+            </div>
+        </div>
+        <form class="search-form navbar-form" role="search">   
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+                <button type="submit" class="btn btn-default">검색</button>
+            </div>            
+        </form>
+        <ul id="search-tab-nav" class="nav nav-pills" role="tablist"></ul>
+        <div id="media-list" class="tab-content"></div>
+        <!-- <div id="media-template" class="hidden">
+            {{#item}}
+            <div class="media" data-article-domain="{{articleDomain}}" data-article-id="{{articleId}}">
+                <a href="#" class="media-left">
+                    {{#hasThumb}}
+                    <img src="{{timg}}" alt="" class="media-image">
+                    {{/hasThumb}}
+                </a>                
+                <div class="media-body">
+                    <h4 class="">{{{title}}}</h4>
+                    {{{body}}}
+                </div>
+            </div>
+            {{/item}}
+            <nav class="search-page">
+                <ul class="pagination">
+                <li class="prev"><a href="#"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="next"><a href="#"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>    
+        </div> -->
+    </div>
+    <div id="article-panel" class="panel">
+        <div>
+            <a href="#" class="back-btn">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span>
+            </a>      
+        </div>
+        <ul id="article-tab-nav" class="nav nav-pills" role="tablist"></ul>
+        <div id="article-list" class="tab-content"></div>
+        <div id="article-template" class="hidden">
+            <!-- 제목 S -->
+            <div id="title" class="title_author">
+                <h1 class="headline movable" data-dzo="title"></h1>
+            </div>
+            <!--// 제목 E -->
+            <div id="title_sub">
+                <h3 class="subtitle movable" data-dzo="subtitle"></h3>
+            </div>
+            <!-- 본문 내용 S -->
+            <div class="paragraph" data-dzo="paragraph">
+                <div data-dzo="paragraph_imageArea">
+                    <dl data-dzo="paragraph_imageWidth">
+                        <dd class="movable">
+                            <img src="" alt="" data-dzo="paragraph_image">
+                        </dd>
+                        <dt class="desc movable" data-dzo="paragraph_imageComment"></dt>
+                    </dl>
+                </div>
+                <div class="cs_video" data-dzo="paragraph_mediaArea">
+                    <dl>
+                        <div class="media-layer movable"></div>
+                        <dd data-dzo="paragraph_media"></dd>
+                        <dt class="movable" data-dzo="paragraph_mediaComment"></dt>
+                    </dl>
+                </div>
+                <div data-dzo="paragraph_text" class="movable"></div>
+            </div>
+            <!--// 본문 내용 E -->
+            <div id="keyword">
+                <dl class="c search">
+                    <dt class="fl mr5" data-dzo="keyword_header">▶ 키워드 |&nbsp;</dt>
+                    <dd><div data-dzo="keyword" style="display: inline;"><a class="movable" data-dzo="keyword_link"></a></div></dd>
+                </dl>
+            </div>
+            <!--관련기사 S-->
+            <div id="related_list" data-dzo="relatedList">
+                <dl class="c" data-dzo="relatedArticle">
+                    <dd>
+                        <img data-dzo="relatedArticle_image">
+                    </dd>
+                    <dt>                       
+                        <a class="movable" data-dzo="relatedArticle_link"></a>
+                    </dt>
+                </dl>
+            </div>
+            <!--관련기사 E-->
+        </div>        
+    </div>
+    <!-- <dvi id="image-panel" class="panel">
+        <form class="image-form navbar-form" role="search">
+            <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+            <button type="submit" class="btn btn-default">검색</button>
+        </form>
+        <div id="image-list"></div>
+        <div id="image-template" class="hidden">      
+            {{#item}}
+            <div class="image movable">             
+                <img src="{{timg}}" alt="">
+            </div>
+            {{/item}}
+            <nav class="search-page">
+                <ul class="pagination">
+                <li class="prev"><a href="#"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="next"><a href="#"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </dvi> -->
+    <div id="video-panel" class="panel">
+        <div class="search-radio">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="video-search-radio" id="youtube-search" checked>
+                    유튜브
+                </label>
+            </div>
+        </div>
+        <form class="search-form navbar-form" role="search">   
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+                <button type="submit" class="btn btn-default">검색</button>
+            </div>           
+        </form>
+        <div id="video-list"></div>
+        <!-- <div id="video-template" class="hidden">
+            {{#items}}
+            <div class="video">
+                <iframe id="{{id.videoId}}" type="text/html" src="https://www.youtube.com/embed/{{id.videoId}}?enablejsapi=1" frameborder="0"></iframe>
+            </div>
+            {{/items}}
+            <nav>
+                <ul class="pager">
+                <li class="prv disabled" data-token="{{prevPageToken}}"><a href="#"><span aria-hidden="true">&larr;</span> 이전</a></li>    
+                <li class="nxt disabled" data-token="{{nextPageToken}}"><a href="#">다음 <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+        </div> -->
+    </div>
+    <div id="component-attr-panel" class="panel">
+        <ul role="tablist" class="nav nav-pills">        
+        <li role="presentation" class="active"><a role="tab" data-toggle="tab" href="#cmp-setting-pane" aria-expanded="true">관련 속성</a></li>
+        <li role="presentation"><a role="tab" data-toggle="tab" href="#cmp-node-pane" aria-expanded="true">항목</a></li>
+        <li role="presentation"><a role="tab" data-toggle="tab" href="#cmp-css-pane" aria-expanded="true">CSS</a></li>
+        <li role="presentation"><a role="tab" data-toggle="tab" href="#cmp-style-pane" aria-expanded="true">인라인</a></li>
+        </ul>
+        <div class="tab-content">            
+            <div role="tabpanel" id="cmp-setting-pane" class="tab-pane active">
+                <ul id="cmp-setting">
+                <li id="com-setting-attr"></li>
+                </ul>
+            </div>
+            <div role="tabpanel" id="cmp-node-pane" class="tab-pane">
+                <ul id="cmp-node">
+                <li id="com-setting-node"></li>
+                </ul>
+            </div>
+            <div role="tabpanel" id="cmp-css-pane" class="tab-pane">
+                <ul id="cmp-css">
+                <li id="com-attr"></li>
+                </ul>
+            </div>
+            <div role="tabpanel" id="cmp-style-pane" class="tab-pane">
+                <ul id="cmp-style">
+                <li id="com-style-attr"></li>
+                </ul>
+            </div>
+            <input type="file" accept="image/*" class="component-image-inp hidden" />
+        </div>
+    </div>
+    <div id="mask"></div>
+    <div class="popover top">
+        <div class="arrow"></div>   
+        <div class="popover-content">
+            <div class="first-popover-btn">
+            <span class="btn-group">
+                <input class="btn btn-default color-inp" type="color">
+            </span>
+            <span class="btn-group font-size-btn-group">
+                <button type="button" class="btn btn-default plus-btn" aria-label="Font Plus">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                <button type="button" class="btn btn-default minus-btn" aria-label="Font Minus">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>            
+            </span>
+            </div>
+            <div>
+            <span class="btn-group">
+                <button type="button" class="btn btn-default popover-btn" data-css-key="font-weight" data-css-value="bold" aria-label="Bold">
+                    <span class="glyphicon glyphicon-bold" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default popover-btn" data-css-key="font-style" data-css-value="italic" aria-label="Italic">
+                    <span class="glyphicon glyphicon-italic"></span>
+                </button>
+            </span>          
+            <span class="btn-group align-btn-group">
+                <button type="button" class="btn btn-default popover-btn" data-css-key="text-align" data-css-value="left" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default popover-btn" data-css-key="text-align" data-css-value="center" aria-label="Center Align">
+                    <span class="glyphicon glyphicon-align-center"></span>
+                </button>
+                <button type="button" class="btn btn-default popover-btn" data-css-key="text-align" data-css-value="right" aria-label="Right Align">
+                    <span class="glyphicon glyphicon-align-right"></span>
+                </button>               
+            </span> 
+            </div> 
+        </div>
+    </div>
+    </div>
+    <!-- //container -->  
+    <!-- footer -->
+    <div id="footer"></div>
+    <!-- //footer -->
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+<!-- <script src="js/hogan.js"></script> -->
+<!-- <script src="js/filesaver.min.js"></script> -->
+<!-- <script src="js/jszip.min.js"></script> -->
+<script src="//www.youtube.com/iframe_api"></script>
+<!-- <script src="js/downloadify.min.js"></script> -->
+<!-- <script src="js/swfobject.js"></script> -->
+<script src="js/dzo.core.js"></script>
+<!-- <script src="js/dzo.categorymap.js"></script> -->
+<!-- <script src="js/dzo.panel.local.core.js"></script> -->
+<!-- <script src="js/dzo.panel.tablet.article.js"></script>  -->
+<!-- <script src="js/dzo.panel.chosun.article.model.js"></script>   -->
+<!-- <script src="js/dzo.panel.chosun.article.action.js"></script> -->
+<!-- <script src="js/dzo.panel.chosun.relatedArticle.js"></script> -->
+<!-- <script src="js/dzo.panel.chosun.relatedArticle.model.js"></script> -->
+<!-- <script src="js/dzo.panel.chosun.relatedArticle.action.js"></script> -->
+<script src="js/d-pub.js"></script>
+<script src="js/d-pub.search.js"></script>
+<script src="//apis.google.com/js/client.js?onload=gapiInit"></script>
+<script>dzo.domain = 'www';</script>
+</body>
+</html>

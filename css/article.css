@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+article{font-family:'돋움',Dotum,'굴림',Gulim,Helvetica,sans-serif}
+
+.fl{float:left}
+.fr{float:right}
+.cl{clear:both}
+.mb2{margin-bottom:2em}
+.mb1{margin-bottom:1em}
+
+.paragraph{font-size:1.125em;line-height:1.5}
+.paragraph p{margin-bottom:1em}
+.subtitle{margin:1em 0}
+
+.left_img{float:left;width:auto;margin:0 2em 1em 0}
+.right_img{float:right;width:auto;margin:0 0 1em 2em}
+.left_img dl, .right_img dl{max-width:540px;width:100%;margin:0 auto;}
+.left_img img, .right_img img{max-width: 540px;vertical-align:top}
+.left_img dt, .right_img dt{}
+
+.center_img{clear:both;float:none;margin:0 auto;padding:1em 0;overflow:hidden}
+.center_img dl{text-align:center;max-width:100%;width:100%;margin: 0 auto}
+.center_img img{/*max-width: 600px;*/width:99%;margin:0 auto;vertical-align:top}
+.center_img dl dt{text-align:left}
+
+.cs_video{clear:both;max-width:600px;width:100%;margin:0 auto 1em}
+.cs_video dd{position: relative;overflow:hidden;padding:0 0 56.25%;height:0}
+.cs_video embed,.cs_video iframe,.cs_video object{position:absolute;top:0;left:0;width:100%;height: 100%}
+.cs_video dt{text-align:left;color:#999;font-size:.875em;line-height:1.5;margin:.5em 0 0;padding:0 .3em}
+
+.title_author{position:relative;overflow:hidden;width:100%}
+.headline{width:98%;text-align:left;margin:.5em 0;font-size:1.5em;line-height: 1.25}
+
+[data-dzo="paragraph_text"] p{overflow:hidden}
+#container{width:100%;margin:0 auto}
