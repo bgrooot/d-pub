@@ -5,7 +5,7 @@
 **dzo-pub**은 웹 페이지 저작도구 입니다. (Ex, [Google Web Desiner](https://www.google.co.kr/intl/ko/webdesigner), [Pindengo](https://pingendo.com))
 그리드로 레이아웃을 그리고 컴포넌트들을 배치하여 HTML로 결과물을 얻을 수 있습니다.
 
-**[DEMO PAGE](http://bgrooot.github.io/dpub)**
+**[DEMO PAGE](http://bgrooot.github.io/dpub/dpub.html)**
 
 - - -
  
