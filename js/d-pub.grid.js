@@ -40,7 +40,7 @@
 
         else
             $removeGrid.addClass(disabled);
-    }, 
+    },
 
     makeSelectable = function(fil) {
 
@@ -51,7 +51,7 @@
         $body.selectable({
 
             cancel: 'a, input, textarea, button, select, option, .component, .close',
-            filter: filter,           
+            filter: filter,
             selected: selected,
             unselected: selected
         });
@@ -60,7 +60,7 @@
     destroySelectable = function() {
 
         $body.selectable('destroy');
-    }; 
+    };
 
     $gridModalBtn.click(function(event) {
 
@@ -97,9 +97,9 @@
         makeSelectable(':not(:has(.row, .component, .com))');
 
         $targetCol.find('[class*="col-"]').sortable({ items: '>.component, >.com', scroll: false });
-        
+
         rowElem.find(':not(:last-child)').html('<div class="resize-bar"></div>');
-        
+
         $insertGrid.addClass('disabled');
         $gridSetting.addClass('disabled');
         $exportGrid.removeClass('disabled');
@@ -108,7 +108,7 @@
     $insertGrid.click(function() {
 
         if (!parent.checkDisabled.call(this))
-            return false;        
+            return false;
     });
 
     $removeGrid.click(function() {
@@ -140,13 +140,13 @@
     $gridSetting.click(function() {
 
         if (!parent.checkDisabled.call(this))
-            return false;        
+            return false;
     });
 
     $exportGrid.click(function() {
 
         if (!parent.checkDisabled.call(this))
-            return false;        
+            return false;
     });
 
     makeSelectable();
@@ -182,7 +182,7 @@
         else if (direction === 'right') {
 
             leftSize = parseInt(leftDeviceClass[1] || 0) + 1;
-            rightSize = parseInt(rightDeviceClass[1] || 12) - 1;            
+            rightSize = parseInt(rightDeviceClass[1] || 12) - 1;
         }
 
         if (!leftSize || !rightSize)
@@ -231,7 +231,7 @@
         event.preventDefault();
 
         moveX = event.pageX - startX;
-        absX = Math.abs(moveX);       
+        absX = Math.abs(moveX);
 
         if (absX > th) {
 
@@ -267,7 +267,7 @@
         $parent = $(window.parent.document),
         $panel = $parent.find('.panel'),
         $gridPanel = $parent.find('#grid-panel'),
-        $initRow = $('.init-row'),        
+        $initRow = $('.init-row'),
         componentTemplate = '<div class="com"><button type="button" class="close">X</button></div>',
         fontSize = $body.css('fontSize').replace('px', ''),
 
@@ -353,25 +353,26 @@
         $img.attr('src', src);
         $span.css('background-image', 'url("' + src + '")');
         $img.one('load', setMaxWidth);
+        $img.one('load', runCalHeight);
 
         parent.dpub.ui.count++;
 
         return $div.children();
     },
-  
+
     calHeight = function($row) {
 
         calUp($row);
         calDown();
-        calResize();  
+        calResize();
     },
 
-    calResize = function() {       
+    calResize = function() {
 
         $body.css('height', 'auto');
         $gridPanel.css('height',  getHeight($body));
 
-        window.parent.dpub.grid.resizeGrid();   
+        window.parent.dpub.grid.resizeGrid();
     },
 
     calCollapsed = function($children) {
@@ -386,14 +387,14 @@
             $child.css('height', '');
 
             if (!$child.children('.component, .row, .com').length) {
-                $child.css('height', fontSize * 10);   
+                $child.css('height', fontSize * 10);
             }
 
             else {
                 $child.css('height', getInnerHeight($child));
             }
 
-            height += getHeight($child);           
+            height += getHeight($child);
         }
 
         return height;
@@ -401,9 +402,9 @@
 
     calUp = function($row) {
 
-        var $parents = $row.add($row.parents('.row')).not('.init-row'),                          
-            $parent, $children, $child, 
-            parentsLen = $parents.length,   
+        var $parents = $row.add($row.parents('.row')).not('.init-row'),
+            $parent, $children, $child,
+            parentsLen = $parents.length,
             childrenLen, height, childHeight, i, j;
 
         //up
@@ -423,8 +424,8 @@
 
                 for (j=0; j<childrenLen; j++) {
 
-                    $child = $children.eq(j);     
-                    $child.css('height', '');               
+                    $child = $children.eq(j);
+                    $child.css('height', '');
 
                     if (!$child.children('.component, .row, .com').length)
                         childHeight = fontSize * 10;
@@ -433,14 +434,15 @@
                         childHeight = getHeight($child);
 
                     height = Math.max(height, childHeight);
-                    $child.css('height', '');      
-                }               
+                    $child.css('height', '');
+                }
             }
 
             if (!height)
                 $parent.addClass('empty');
 
             else {
+                if ($parent.find('component, .row, .com')) height +=2;
                 $parent.css('height', height);
             }
         }
@@ -479,7 +481,7 @@
                     continue;
 
                 for (k=0; k<notEmptyLen; k++)
-                    heightSum += getHeight($notEmpty.eq(k)); 
+                    heightSum += getHeight($notEmpty.eq(k));
 
                 $empty.css('height', (height - heightSum) / $empty.length);
             }
@@ -498,9 +500,10 @@
     //leaf col
     $body.on('mousedown', '[class*="col-"]:not(:has(.row))', function() {
 
-        var $this = $(this),        
+        var $this = $(this),
             $row = $this.closest('.row'),
             $item;
+
 
         if ($this.hasClass('init-col'))
             return;
@@ -514,7 +517,7 @@
         $row.removeClass('empty');
 
         if ($item.filter('img').length)
-            $item = makeImageComponent($item);   
+            $item = makeImageComponent($item);
 
         else
             $item = $(componentTemplate).append($item);
@@ -526,7 +529,7 @@
         destroySelectable();
         makeSelectable(':not(:has(.row, .component, .com))');
 
-        calHeight($row); 
+        calHeight($row);
     });
 
     $body.on('mousedown', '.close', function(event) {
@@ -535,9 +538,9 @@
         // event.stopPropagation();
 
         var $this = $(this),
-            $row = $this.closest('.row');       
-        
-        $this.closest('.component').remove();     
+            $row = $this.closest('.row');
+
+        $this.closest('.component').remove();
         calHeight($row);
     });
 
@@ -569,7 +572,7 @@
             return;
 
         var $this = $(this),
-            time = new Date().getTime(),            
+            time = new Date().getTime(),
             clickTime = $this.data('click-time');
 
         if (!clickTime) {
@@ -586,9 +589,9 @@
 
             if (time - clickTime < 300)
                 $this.trigger('dbmousedown');
-        }        
+        }
     });
-   
+
     // $body.on('dbmousedown', '[class*="col-"]:not(:has(.row))', function(event) {
 
     //     var $this = $(this);

@@ -1,9 +1,9 @@
 var dpub = {
 
-    lastClosed: 'search-panel',
-    device: ['xs', 'sm', 'md'], 
-    grid: {device: 'md', initRow: null, initCol: null, frame: null}, 
-    article: {count: 0}, 
+    lastClosed: 'component-attr-panel',
+    device: ['xs', 'sm', 'md'],
+    grid: {device: 'md', initRow: null, initCol: null, frame: null},
+    article: {count: 0},
     search: {count: 0, pageCnt: 5},
     ui: {count: 0}
 };
@@ -16,11 +16,11 @@ window.dpub = dpub;
         $document = $(document),
         $window = $(window),
         $panel = $('.panel'),
-        $gridPanel = $('#grid-panel'),          
-        $searchPanel = $('#search-panel'),     
-        $articlePanel = $('#article-panel'),             
+        $gridPanel = $('#grid-panel'),
+        $searchPanel = $('#search-panel'),
+        $articlePanel = $('#article-panel'),
 
-        headerHeight = parseInt($('.navbar').css('height').split('px')[0]),        
+        headerHeight = parseInt($('.navbar').css('height').split('px')[0]),
 
     gapiInit = function() {
 
@@ -28,7 +28,7 @@ window.dpub = dpub;
         gapi.client.load('youtube', 'v3');
     },
 
-    resizeGrid = function() {     
+    resizeGrid = function() {
 
         dpub.grid.width = $gridPanel.width();
         dpub.grid.height = $gridPanel.height();
@@ -59,7 +59,7 @@ window.dpub = dpub;
             $media = $article.find('.cs_video iframe'),
             $mediaLayer = $media.closest('.cs_video').find('.media-layer');
 
-        $article.css('display', '');        
+        $article.css('display', '');
         $mediaLayer.width($media.width()).height($media.height());
         $('.left_img, .right_img').removeClass('left_img right_img').addClass('center_img');
     });
@@ -124,7 +124,7 @@ window.dpub = dpub;
         $videoSearchInp = $videoPanel.find('.form-control'),
         $imagePanel = $('#image-panel'),
         $imageSearchInp = $imagePanel.find('.form-control'),
-        $modal = $('.modal'),       
+        $modal = $('.modal'),
         $gridSetting = $('.grid-setting'),
         $gridImportInp = $('.import-grid-inp'),
         $gridWidthInp = $('#width-inp'),
@@ -145,7 +145,7 @@ window.dpub = dpub;
             $row, $cols, $col, colLen, collapsedLen, i, j;
 
         for (i=deviceIdx; i>=0; i--)
-            $collapsed = $collapsed.not('[class*="' + dpub.device[i] + '"]');          
+            $collapsed = $collapsed.not('[class*="' + dpub.device[i] + '"]');
 
         // $collapsed = $collapsed.parent().not('.collapsed');
         $collapsed = $collapsed.parent();
@@ -156,20 +156,20 @@ window.dpub = dpub;
 
             $row = $collapsed.eq(i);
             $cols = $row.children();
-            colLen = $cols.length;  
+            colLen = $cols.length;
 
             for (j=0; j<colLen; j++) {
 
-                $col = $cols.eq(j);                
+                $col = $cols.eq(j);
 
                 if (!$col.children('.component, .row, .com').length)
-                    $col.css('height', 100 / colLen + '%');                
-            }                
+                    $col.css('height', 100 / colLen + '%');
+            }
 
             $row.addClass('collapsed');
 
             setTimeout(function($row) {
-               
+
                 gridFrame.contentWindow.calHeight($row);
 
             }, 1, $row);
@@ -182,8 +182,8 @@ window.dpub = dpub;
             $notCollapsed = $(), $row, notCollapsedLen, i;
 
         for (i=deviceIdx; i>=0; i--)
-            $notCollapsed = $notCollapsed.add(dpub.grid.initCol.find('[class*="col-' + dpub.device[i] + '"]'));        
-        
+            $notCollapsed = $notCollapsed.add(dpub.grid.initCol.find('[class*="col-' + dpub.device[i] + '"]'));
+
         $notCollapsed = $notCollapsed.parent('.collapsed');
         $notCollapsed.removeClass('collapsed');
         notCollapsedLen = $notCollapsed.length;
@@ -194,7 +194,7 @@ window.dpub = dpub;
             gridFrame.contentWindow.calUp($row);
         }
 
-        gridFrame.contentWindow.calDown();  
+        gridFrame.contentWindow.calDown();
     },
 
     checkDisabled = function() {
@@ -205,7 +205,7 @@ window.dpub = dpub;
             return false;
 
         else
-            return true;    
+            return true;
     },
 
     setLastClosed = function() {
@@ -222,7 +222,7 @@ window.dpub = dpub;
     $('.com-menu').click(function(event) {
 
         if (!checkDisabled.call(this))
-            return false;        
+            return false;
 
         event.preventDefault();
 
@@ -241,13 +241,15 @@ window.dpub = dpub;
         if (com.asyncMake) {
 
             com.elem = $col;
-            dpub.ui.asyncComponent = com;            
+            dpub.ui.asyncComponent = com;
         }
 
         else {
 
             $com = com.makeNode($col);
-            $com.find('img').one('load', runCalHeight);
+            $com.find('img').one('load', function() {
+                runCalHeight();
+            });
         }
 
         dpub.ui.count++;
@@ -273,14 +275,14 @@ window.dpub = dpub;
             device = $this.data('device'),
             fontClass = $this.children('.typcn').attr('class'),
             size = $gridWidthInp.val()|| $this.data('size');
-        
+
         dpub.grid.frame.removeClass(dpub.grid.device);
         dpub.grid.frame.addClass(device);
 
         dpub.grid.device = $this.data('device');
 
         $deviceBtn.attr('class', fontClass + ' no-font-size');
-        
+
         size = size ? size : '';
         $gridPanel.width(size);
 
@@ -288,7 +290,7 @@ window.dpub = dpub;
             return;
 
         setCollapsedHeight();
-        setNotCollapsedHeight();   
+        setNotCollapsedHeight();
         gridFrame.contentWindow.calResize();
         dpub.grid.resizeGrid();
     });
@@ -298,11 +300,15 @@ window.dpub = dpub;
         $panel.hide();
 
         if ($content.hasClass('full'))
-            $('#' + dpub.lastClosed).show();        
+            $('#' + dpub.lastClosed).show();
 
         $content.toggleClass('full');
         $sidemenuIcon.toggleClass('typcn-media-play');
         $sidemenuIcon.toggleClass('typcn-media-play-reverse');
+
+        dpub.grid.initRow.find('.row:not(:has(.row))').each(function(index, elem) {
+            gridFrame.contentWindow.calHeight($(elem));
+        })
     });
 
     $('#save-btn').click(function(event) {
@@ -321,7 +327,7 @@ window.dpub = dpub;
         $html.find('.row').removeClass('ui-selectee ui-selected');
 
         for (i=0; i<fileLen; i++)
-            zip.file(files[i].target, files[i].result);        
+            zip.file(files[i].target, files[i].result);
 
         // zip.folder('js').file('component.js', componentScript);
         // zip.folder('css').file('component.css', componentCss);
@@ -329,7 +335,7 @@ window.dpub = dpub;
 
         zip.file('d-pub.html', layout.replace('<!--insert-->', $html.html()));
         saveAs(zip.generate({type: 'blob'}), 'd-pub.zip');
-    }); 
+    });
 
     $('#search-btn').click(function(event) {
 
@@ -393,7 +399,7 @@ window.dpub = dpub;
         downloadImage: 'img/grid.png',
         width: '158',
         height: '31'
-    });   
+    });
     */
 
     $('.import-grid').click(function(event) {
@@ -475,7 +481,7 @@ window.dpub = dpub;
             {target: 'img/tab_off.png', option: 'image'},
             {target: 'img/cs_icon20140915.png', option: 'image'},
             {target: 'img/bg-parallaxsample06.jpg', option: 'image'},
-            {target: 'img/bg-parallaxsample09.jpg', option: 'image'},            
+            {target: 'img/bg-parallaxsample09.jpg', option: 'image'},
             {target: 'img/bg-parallaxsample05.jpg', option: 'image'}
         ],
 
@@ -491,7 +497,7 @@ window.dpub = dpub;
     for (i=0; i<fileLen; i++) {
 
         xhr = new XMLHttpRequest();
-        file = files[i];            
+        file = files[i];
 
         xhr.open('GET', file.target, true);
         xhr.onload = onload;
@@ -502,7 +508,7 @@ window.dpub = dpub;
         xhr.send();
 
         xhrArr.push(xhr);
-    } 
+    }
 
     window.files = files;
 
@@ -525,7 +531,7 @@ window.dpub = dpub;
 
 //     $panel.mouseleave(function() {
 
-//         panelOver = false;       
+//         panelOver = false;
 //     });
 
 //     $document.on('mousewheel', function() {
@@ -538,9 +544,9 @@ window.dpub = dpub;
 
 //             if ($gridPanel.css('position') !== 'fixed')
 //                 $gridPanel.css('top', gridTopOffset - scrollTop);
-            
+
 //             $document.trigger('panelWheel');
-//         } 
+//         }
 
 //         else {
 
@@ -550,9 +556,9 @@ window.dpub = dpub;
 
 //                 $panel.css({
 
-//                     top: gridTopOffset - scrollTop, 
-//                     left: $panelVislble.offset().left, 
-//                     height: $panelVislble.outerHeight(), 
+//                     top: gridTopOffset - scrollTop,
+//                     left: $panelVislble.offset().left,
+//                     height: $panelVislble.outerHeight(),
 //                     minHeight: 'initial'
 //                 });
 //             }
@@ -574,10 +580,10 @@ window.dpub = dpub;
 
 //         $gridPanel.css({
 
-//             position: 'fixed',    
-//             width: $gridPanel.width(), 
+//             position: 'fixed',
+//             width: $gridPanel.width(),
 //             height: $gridPanel.height()
-//         });        
+//         });
 //     });
 
 //     $document.on('gridWheel', function() {
