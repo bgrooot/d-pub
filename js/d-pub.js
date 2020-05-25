@@ -24,7 +24,7 @@ window.dpub = dpub;
 
     gapiInit = function() {
 
-        gapi.client.setApiKey('AIzaSyB61xwMPROfuSyqVGbfTEdvjbuGYJnsKec');
+        gapi.client.setApiKey('');
         gapi.client.load('youtube', 'v3');
     },
 
